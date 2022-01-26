@@ -1,0 +1,65 @@
+
+<div class="container"  >
+    <img class="card-img-top mb-5 mb-md-0" src="data:image/PNG;base64,{{productDetails.productImg}}" alt="..."  style="width: 300px; "/>
+    <form class="row g-3" (submit)="updateProduct(addProductForm)"  #addProductForm="ngForm" >
+        
+    <div class="col-md-4" >
+      <label for="validationDefault01" class="form-label" >Product name</label>
+      <input type="text" class="form-control"  id="validationDefault01" value="Mark" [(ngModel)]="productDetails.productName" required name="productName" ngModel>
+    </div>
+
+    <div class="col-md-4">
+        <label for="validationDefault01" class="form-label" >Category Id</label>
+        <input type="text" class="form-control" id="validationDefault01"  value="Mark" [(ngModel)]="productDetails.categoryId" required name="categoryId" ngModel>
+      </div>
+
+    <div class="col-md-4">
+      <label for="validationDefaultUsername" class="form-label" >Description</label>
+      <div class="input-group">
+        <input type="text" class="form-control" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" [(ngModel)]="productDetails.description" required name="description" ngModel>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+        <label for="validationDefault04" class="form-label">Rating</label>
+        <select class="form-select" id="validationDefault04" [(ngModel)]="productDetails.rating" required name="rating" ngModel>
+          <option selected disabled value="">Choose...</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+
+    <div class="col-md-4">
+      <label for="validationDefault03" class="form-label">Price</label>
+      <div class="input-group">
+       <span class="input-group-text" id="inputGroupPrepend2">$</span>
+       <input type="text" class="form-control" id="validationDefault03" [(ngModel)]="productDetails.price" required name="price" ngModel>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <label for="validationDefault04" class="form-label">Warranty</label>
+      <select class="form-select" id="validationDefault04" [(ngModel)]="productDetails.warranty" required name="warranty"  ngModel>
+        <option selected disabled value="">Choose...</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <label for="validationDefault05" class="form-label">Color</label>
+      <input type="text" class="form-control" id="validationDefault05" [(ngModel)]="productDetails.color" required name="product_color" ngModel>
+    </div>
+
+    
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit">Update Product</button>
+    </div>
+  </form>
+</div>

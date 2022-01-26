@@ -1,0 +1,58 @@
+
+<div class="container">
+    
+    <form class="row g-3" (submit)="addNewProduct(addProductForm)" #addProductForm="ngForm">
+    <div class="col-md-4">
+      <label for="validationDefault01" class="form-label" >Product name</label>
+      <input type="text" class="form-control  " id="validationDefault01"  minlength="4" required name="product_name" ngModel>
+    </div>
+    <div class="col-md-4">
+        <label for="validationDefault01" class="form-label" >Category Name</label>
+        <select #proc (change)="showInfo(proc.value)" class="form-select" name="product_category" ngModel>       
+            <option *ngFor="let cat of categoryList" [value]="cat.id">{{ cat.categoryName }}</option>          
+        </select>
+      </div>
+
+    <div class="col-md-4">
+      <label for="validationDefaultUsername" class="form-label">Description</label>
+      <div class="input-group">
+
+        <input type="text" class="form-control" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" required name="product_description" ngModel>
+      </div>
+    </div>
+    <div class="col-md-3">
+        <label for="validationDefault04" class="form-label">Rating</label>
+        <select class="form-select" id="validationDefault04" required name="product_rating" ngModel>
+          <option selected disabled value="">Choose...</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+    <div class="col-md-6">
+      <label for="validationDefault03" class="form-label">Price</label>
+      <input type="text" class="form-control" id="validationDefault03" required name="product_price" ngModel>
+    </div>
+
+    <div class="col-md-3">
+      <label for="validationDefault04" class="form-label">warranty</label>
+      <select class="form-select" id="validationDefault04" required name="warranty" ngModel>
+        <option selected disabled value="">Choose...</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <label for="validationDefault05" class="form-label">Color</label>
+      <input type="text" class="form-control" id="validationDefault05" required name="product_color" ngModel>
+    </div>
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit" [disabled]="!addProductForm.valid" >Add product</button>
+    </div>
+  </form>
+</div>

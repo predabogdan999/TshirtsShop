@@ -1,0 +1,82 @@
+{
+  "products": [
+    {
+      "productId": 1,
+      "productName": "Tshirt - 1",
+      "categoryId": 1,
+      "description": "Product description goes here",
+      "productImg": "http://localhost:4200/assets/1.png",
+      "price": 100,
+      "is_available": true,
+      "rating": 4,
+      "reviews": 2,
+      "vendor-name": "Seller - 1",
+      "warranty": 2
+    },
+    {
+      "productId": 2,
+      "productName": "Tshirt - 2",
+      "categoryId": 2,
+      "description": "Product description goes here",
+      "productImg": "http://localhost:4200/assets/2.png",
+      "price": 40,
+      "is_available": true,
+      "rating": 3,
+      "reviews": 3,
+      "vendor-name": "Seller - 2",
+      "warranty": 1
+    },
+    {
+      "productId": 3,
+      "productName": "Tshirt - 3",
+      "categoryId": 3,
+      "description": "Product description goes here",
+      "productImg": "http://localhost:4200/assets/3.jpg",
+      "price": 40,
+      "is_available": true,
+      "rating": 3,
+      "reviews": 4,
+      "vendor-name": "Seller - 2",
+      "warranty": 1
+    },
+    {
+      "productId": 4,
+      "productName": "Tshirt - 4",
+      "categoryId": 3,
+      "description": "Product description goes here",
+      "productImg": "http://localhost:4200/assets/4.png",
+      "price": 40,
+      "is_available": true,
+      "rating": 3,
+      "reviews": 5,
+      "vendor-name": "Seller - 2",
+      "warranty": 1
+    },
+    {
+      "id": 11,
+      "categoryId": "1",
+      "productName": "Adidas tshirts",
+      "rating": "1",
+      "price": "30",
+      "productImg": "",
+      "isAvailable": 1
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "categoryName": "Polo Tshirts"
+    },
+    {
+      "id": 2,
+      "categoryName": "Soccer Tshirts"
+    },
+    {
+      "id": 3,
+      "categoryName": "Casual Tshirts"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
