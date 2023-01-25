@@ -1,0 +1,38 @@
+<div *ngIf="!soldOut">
+  <h1 mat-dialog-title>Add to Cart </h1>
+<div mat-dialog-content>
+</div>
+  <form  >
+    <mat-form-field appearance="fill">
+      <mat-label>Select Size</mat-label>
+      <mat-select [(ngModel)]="cartModel.size" name="sizes" (selectionChange)="setStockAndSize($event.value)">
+        <mat-option  *ngFor="let sizeProd of sizeAndStockProduct" [value]="sizeProd.size" >
+          {{sizeProd.size}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field  appearance="fill" >
+      <mat-label>Quantity</mat-label>
+      <input   matInput
+             value="1"
+             type="number"
+             min="1"
+             [max]="stockbySize"
+             name="Stock"
+             placeholder="Quantity"
+             [(ngModel)]="cartModel.stoc">
+    </mat-form-field>
+  </form>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close</button>
+  <button mat-button [mat-dialog-close]="cartModel" cdkFocusInitial>Add to Cart</button>
+</div>
+</div>
+
+<div *ngIf="soldOut">
+  <h1 mat-dialog-title style="color: red;">
+    <mat-icon>error_outline</mat-icon>
+    <strong>   Sold Out </strong>
+  </h1>
+</div>
+

@@ -10,7 +10,7 @@ import { Product } from '../product';
   styleUrls: ['./view-all-products-by-category.component.css']
 })
 export class ViewAllProductsByCategoryComponent implements OnInit {
-
+  imagePath = "/assets/";
   searchCategory : Category[] = [];
   productList: Product[] = [];
   
@@ -25,6 +25,15 @@ export class ViewAllProductsByCategoryComponent implements OnInit {
       this.productList = categoryData;
     });
   });
+  this.productService.getSearch().subscribe(datas =>{
+    this.productService.searchNameAndDescription(datas).subscribe(response =>{
+    this.productList = response;
+    });
+  });
   }
+  public createImgPath (serverPath: string)  {
+    return this.productService.createImagePath(serverPath);
+}
+
    
 }

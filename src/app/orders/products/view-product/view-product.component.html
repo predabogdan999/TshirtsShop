@@ -1,12 +1,26 @@
-
 <section class="py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
-            <div class="col-md-6">               
-            <div class="col-md-6" >
-                <img class="card-img-top mb-5 mb-md-0" src="data:image/PNG;base64,{{productDetails.productImg}}" alt="..." /></div>
-                <a href="/products/update-product/{{productDetails.productId}}">Update Product</a> | 
-                <a href="/products/delete-product/{{productDetails.productId}}">Delete Product</a>
+            <div class="col-md-6">
+            <div >
+              <ngb-carousel [showNavigationArrows]="true"
+              [showNavigationIndicators]="true" >
+                <ng-template ngbSlide *ngFor="let img of imagesList">
+                  <div class="picsum-img-wrapper" >
+                    <img [src]="img.path" alt="Angular Carousel 1">
+                  </div>
+                </ng-template>
+              </ngb-carousel>
+              <!--  <img class="card-img-top mb-5 mb-md-0"  [src]="createImgPath(img.path)" alt="image" >-->
+            </div>
+                <div *ngIf="isAdmin && authenticated">
+                  <a href="/update-product/{{productDetails.productId}}">Update Product</a> |
+                  <a href="/delete-product/{{productDetails.productId}}">Delete Product</a><br>
+                  <button mat-stroked-button  color="primary" (click)="addToExpired(productDetails.productId)">Add to expired products</button>
+                </div>
+
+                <mat-label>The product expires on {{productDetails.endDate  | date: 'medium'}}</mat-label>
+
                 <h1 class="display-5 fw-bolder">{{productDetails.productName }} </h1>
                 <div class="fs-5 mb-5">
                     <span>${{productDetails.price}}</span>

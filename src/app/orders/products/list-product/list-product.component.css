@@ -1,0 +1,16 @@
+.content {
+    padding: 16px;
+}
+
+.content > mat-card {
+    width: 200px;
+}
+.product__price{
+    margin-left: auto;
+    font-size: 2.6rem;
+    color: #000;
+}
+a{
+   text-align: center;
+   text-decoration: none;
+}

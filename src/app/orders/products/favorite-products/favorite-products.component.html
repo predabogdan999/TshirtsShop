@@ -1,0 +1,29 @@
+<h1>Favorite </h1>
+<div class="container px-4 px-lg-5 mt-5">
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"  >
+        <div class="col mb-5"  *ngFor="let product of  stored ; let i = index"  >
+
+            <div class="card h-100">
+                      <img [src]="product.imagePath" alt="image" >
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <h5 class="fw-bolder" >
+                          <a routerLink="product/{{ product.products.productId }}">
+                            {{product.products.productName}}
+                          </a>
+                        </h5>
+                        ${{ product.products.price }}
+                    </div>
+                    <p class="card-text">{{product.products.description}}</p>
+                    <button (click)="removeFromFavorite(i)" mat-icon-button color="warn" >
+                      <svg  xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                   </button>
+                </div>
+               <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/cart/{{product.products.productId}}">Add to cart</a></div>
+            </div>
+            </div>
+        </div>
+
+
+    </div>

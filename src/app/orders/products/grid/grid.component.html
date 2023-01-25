@@ -1,0 +1,27 @@
+<mat-grid-list cols="6" rowHeight="600px"  >
+
+    <mat-grid-tile  #paginator *ngFor="let product of  productList" >
+        <a [routerLink]="['/products/product/', product.productId]" class=" grid  " >
+        <mat-card class="mat-elevation-z4" >
+            <mat-card-header>
+              <mat-card-title> {{product.productName}}  </mat-card-title>
+            </mat-card-header>
+            <img mat-card-image  [src]="createImgPath(product.productImg)">
+            <em class="product__price">{{ product.price | currency: 'USD' }}</em>
+            <mat-card-content>
+              <p>
+                  {{product.description}}
+              </p>
+            </mat-card-content>
+          </mat-card>
+        </a>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+  <mat-paginator #paginator
+                 [length]="length"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="[5, 10, 25, 100]"
+                 [pageIndex]="currentPage"
+                 (page)="getPaginatorData($event)"
+                 ></mat-paginator>

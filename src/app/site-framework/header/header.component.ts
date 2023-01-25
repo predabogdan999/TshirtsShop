@@ -1,7 +1,4 @@
-import { Category } from './../Category';
 import { Component, OnInit } from '@angular/core';
-
-import { ProductsService } from './../../orders/products/products.service';
 
 
 @Component({
@@ -11,18 +8,13 @@ import { ProductsService } from './../../orders/products/products.service';
 })
 export class HeaderComponent implements OnInit {
 
- 
-  categoryList:  Category[] = [];
-  constructor(private productsService: ProductsService) {
+  constructor() {
     
    }
 
   ngOnInit(): void {
-    this.productsService.getCategories().subscribe(data =>{
-      
-     this.categoryList = data;
-    });
+
   }
- 
+  
 
 }

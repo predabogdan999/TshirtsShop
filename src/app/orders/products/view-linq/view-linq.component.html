@@ -1,0 +1,68 @@
+<mat-table  matSort (matSortChange)="sortData($event)"  [dataSource]="dataSource"  class="mat-elevation-z8" style="width: 100%;">
+    <ng-container matColumnDef="productImg"  >
+        <mat-header-cell *matHeaderCellDef> Image </mat-header-cell> 
+        <mat-cell *matCellDef="let product"><img [src]="createImgPath(product.productImg)" alt="image" ></mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="productName"  >
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+        <mat-cell *matCellDef="let product">{{product.productName}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="price">
+        <mat-header-cell mat-sort-header *matHeaderCellDef> Price $</mat-header-cell>
+        <mat-cell *matCellDef="let product">{{product.price}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="categoryId">
+        <mat-header-cell mat-sort-header  *matHeaderCellDef> CategoryName</mat-header-cell>
+        <mat-cell *matCellDef="let product"> 
+            {{product.categoryId | categoryById:categoryList }} 
+        </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="startDate">
+        <mat-header-cell mat-sort-header  *matHeaderCellDef> Adding Date</mat-header-cell>
+        <mat-cell *matCellDef="let product">{{product.startDate  | date: 'dd/MM/yyyy'}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="endDate">
+        <mat-header-cell mat-sort-header  *matHeaderCellDef> Expiration Date</mat-header-cell>
+        <mat-cell *matCellDef="let product">{{product.endDate  | date: 'dd/MM/yyyy'}}</mat-cell>
+    </ng-container> 
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let myRowData; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<!--
+<li *ngFor="let item of obj(categories)   ">
+    {{item}} 
+        <mat-table  [dataSource]="getdata(item)"  class="mat-elevation-z8"  style="width: 100%;">
+            <ng-container matColumnDef="productImg"  >
+                <mat-header-cell *matHeaderCellDef> Image </mat-header-cell> 
+                <mat-cell *matCellDef="let product"><img [src]="createImgPath(product.productImg)" alt="image" ></mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="productName"  >
+                <mat-header-cell *matHeaderCellDef > Name </mat-header-cell>
+                <mat-cell *matCellDef="let product">{{product.productName}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="price">
+                <mat-header-cell  *matHeaderCellDef> Price $</mat-header-cell>
+                <mat-cell *matCellDef="let product">{{product.price}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="categoryId">
+                <mat-header-cell  *matHeaderCellDef> CategoryName</mat-header-cell>
+                <mat-cell *matCellDef="let product"> 
+                    {{product.categoryId | categoryById:categoryList }} 
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="startDate">
+                <mat-header-cell  *matHeaderCellDef> Adding Date</mat-header-cell>
+                <mat-cell *matCellDef="let product">{{product.startDate  | date: 'dd/MM/yyyy'}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="endDate">
+                <mat-header-cell   *matHeaderCellDef> Expiration Date</mat-header-cell>
+                <mat-cell *matCellDef="let product">{{product.endDate  | date: 'dd/MM/yyyy'}}</mat-cell>
+            </ng-container> 
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let myRowData; columns: displayedColumns;"></mat-row> 
+        </mat-table> 
+</li>
+
+-->
+

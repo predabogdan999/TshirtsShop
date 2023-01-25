@@ -1,0 +1,17 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+<div class="container">
+    <div class="row">
+      <div class="search-input">
+        <input matInput class="form-control search-input" type="text"  class="fa  form-control "     placeholder="&#xF002; Search" 
+                                              name="search" [(ngModel)]="query"   (input)="searchThis(query)" [matAutocomplete]="auto" >
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngIf="isLoading" class="is-loading"><mat-spinner diameter="50"></mat-spinner></mat-option>
+          <ng-container >
+            <mat-option   *ngFor="let option of filteredName | async " [value]="option.productName">
+               <span *ngIf="!isLoading" (click)="searchThis(option.productName)">{{ option.productName }}</span>
+            </mat-option>
+        </ng-container>
+        </mat-autocomplete>
+    </div>
+    </div>
+  </div>  

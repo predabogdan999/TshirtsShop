@@ -1,16 +1,26 @@
 
 <div class="container"  >
-    <img class="card-img-top mb-5 mb-md-0" src="data:image/PNG;base64,{{productDetails.productImg}}" alt="..."  style="width: 300px; "/>
+ <img [src]="changeImage()"  class="card-img-top mb-5 mb-md-0" style="width: 300px; padding-bottom: 20px; padding-top: 20px; "  *ngIf="whichImage"> <br/>
+  <img class="card-img-top mb-5 mb-md-0" *ngIf="!whichImage" [src]="createImgPath(productDetails.productImg)"  style="width: 300px; "/>
     <form class="row g-3" (submit)="updateProduct(addProductForm)"  #addProductForm="ngForm" >
-        
+    <app-upload (onUploadFinished)="uploadFinished($event)"></app-upload>
     <div class="col-md-4" >
       <label for="validationDefault01" class="form-label" >Product name</label>
-      <input type="text" class="form-control"  id="validationDefault01" value="Mark" [(ngModel)]="productDetails.productName" required name="productName" ngModel>
+        <input type="text"
+               class="form-control"
+               id="validationDefault01"
+               value="Mark"
+               [(ngModel)]="productDetails.productName"
+               required name="productName" ngModel>
     </div>
 
-    <div class="col-md-4">
-        <label for="validationDefault01" class="form-label" >Category Id</label>
-        <input type="text" class="form-control" id="validationDefault01"  value="Mark" [(ngModel)]="productDetails.categoryId" required name="categoryId" ngModel>
+
+      <div class="col-md-4">
+        <label for="validationDefault01" class="form-label" >Category Name</label>
+        <select #proc (change)="showInfo(proc.value)" class="form-select" [(ngModel)]="productDetails.categoryId"  name="product_category" ngModel>
+          <option selected disabled value="">Category...</option>
+            <option *ngFor="let cat of categoryList" [value]="cat.id">{{ cat.categoryName }}</option>
+        </select>
       </div>
 
     <div class="col-md-4">
@@ -36,7 +46,7 @@
       <label for="validationDefault03" class="form-label">Price</label>
       <div class="input-group">
        <span class="input-group-text" id="inputGroupPrepend2">$</span>
-       <input type="text" class="form-control" id="validationDefault03" [(ngModel)]="productDetails.price" required name="price" ngModel>
+       <input matInput type="text" class="form-control" id="validationDefault03" [(ngModel)]="productDetails.price" required name="price" ngModel>
       </div>
     </div>
 
@@ -56,8 +66,13 @@
       <label for="validationDefault05" class="form-label">Color</label>
       <input type="text" class="form-control" id="validationDefault05" [(ngModel)]="productDetails.color" required name="product_color" ngModel>
     </div>
+    <mat-form-field >
+      <mat-label>End date </mat-label>
+      <input matInput class="form-control" style="max-width: 30%;" [matDatepicker]="endPicker" [(ngModel)]="productDetails.endDate" name="end" placeholder="Expiration date..." ngModel>
+      <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+      <mat-datepicker #endPicker></mat-datepicker>
+    </mat-form-field>
 
-    
     <div class="col-12">
       <button class="btn btn-primary" type="submit">Update Product</button>
     </div>

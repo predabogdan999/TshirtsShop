@@ -1,0 +1,12 @@
+.image-prod{
+  height: 200px;
+   width: 200px;
+}
+.example-card {
+  max-width: 900px;
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+.container{
+  margin-bottom: 8px;
+}

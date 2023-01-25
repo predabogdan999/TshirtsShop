@@ -1,6 +1,7 @@
-import { ProductsService } from './../products.service';
+import { ProductsService } from 'src/app/orders/products/products.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Product } from 'src/app/orders/products/product';
 
 @Component({
   selector: 'app-delete-product',
@@ -10,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class DeleteProductComponent implements OnInit {
 
   productId = 0;
+  productList: Product[]=[];
 
   constructor( private activatedRoute: ActivatedRoute,
     private productService: ProductsService,
@@ -20,8 +22,10 @@ export class DeleteProductComponent implements OnInit {
       this.productId = data.id;
   });
   this.productService.deleteProduct(this.productId).subscribe( deleteData =>{
-    console.log('Deleted Product');
   });
-  this.router.navigate(['/products']);
+  this.productService.getAllProducts().subscribe(data =>{
+    this.productList = data;
+    this.router.navigate(['/products']);
+  });
   }
 }

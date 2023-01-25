@@ -6,15 +6,34 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="/products">Home</a></li>
-               
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/linqlist">Table view</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/products/product">List Product</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/products/grid">Grid View</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/products/group">Group by Category</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/products/favorite">Favorite</a></li>
             </ul>
-            <form class="d-flex">
-                <button class="btn btn-outline-dark" type="submit">
-                    <i class="bi-cart-fill me-1"></i>
-                    Cart
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                </button>
-            </form>
+          <!-- Search form -->
+          <app-search (search)="searchThis($event)"></app-search>
+          <a class="nav-link active" aria-current="page" href="/products/favorite">
+            <mat-icon  [matBadge]="favoriteProductsNumber()">
+              <svg  xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" style="color: black;"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </mat-icon>
+            </a>
+            <a class="nav-link active" aria-current="page" href="/products/cart">
+              <mat-icon  [matBadge]="CartProductsNumber()">
+               <svg  xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" style="color: black;"><path d="M0 0h24v24H0zm18.31 6l-2.76 5z" fill="none" /><path d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z"/></svg>
+              </mat-icon>
+            </a>
+           <ul>
+            <a *ngIf="!authenticated " class="btn btn-outline-dark" type="submit"(click)="login()">Login</a>
+           </ul>
+           <ul>
+            <a *ngIf="!authenticated " class="btn btn-outline-dark" type="submit"(click)="register()">Register</a>
+           </ul>
+           <ul>
+            <a class="btn btn-outline-dark" type="submit"  *ngIf="authenticated" (click)="onLogout()">Logout</a>
+           </ul>
+
         </div>
     </div>
 </nav>
